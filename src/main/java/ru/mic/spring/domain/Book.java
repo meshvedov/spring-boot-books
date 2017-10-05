@@ -3,7 +3,7 @@ package ru.mic.spring.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 public class Book {
     @Id
     @Column(name = "id")
