@@ -26,10 +26,10 @@
         <td>{{book.isbn}}</td>
         <td>{{book.read | checkmark}}</td>
         <td>
-            <input type="image" name="image" ng-src="images/edit.png" width="25" ng-click="edit(book)">
+            <input type="image" name="image" ng-src="images/edit.png" width="25" ng-click="$ctrl.edit(book)">
         </td>
         <td>
-            <input type="image" name="image" ng-src="images/remove.png" width="25" ng-click="delete(book.id)">
+            <input type="image" name="image" ng-src="images/remove.png" width="25" ng-click="$ctrl.delete(book.id)">
         </td>
     </tr>
     </tbody>

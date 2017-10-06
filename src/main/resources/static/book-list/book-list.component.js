@@ -16,5 +16,13 @@ angular.module('bookList').component('bookList', {
                 self.bookss = response.data;
             });
 
+        this.delete = function(id) {
+            $http.delete(this.base_url + "/delete/" + id).then(function () {
+                $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                    .then(function (response) {
+                        self.bookss = response.data;
+                    });
+            });
+        };
     }
 });
