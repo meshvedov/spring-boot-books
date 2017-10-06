@@ -3,7 +3,7 @@ angular.module('bookList').component('bookList', {
 
     templateUrl: 'book-list/book-list.template.html',
 
-    controller: function BookListController($http) {
+    controller: ['$http', function BookListController($http) {
         var self = this;
         self.base_url = "http://localhost:8080";
         self.search_name = "";
@@ -24,5 +24,5 @@ angular.module('bookList').component('bookList', {
                     });
             });
         };
-    }
+    }]
 });
