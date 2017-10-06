@@ -24,5 +24,31 @@ angular.module('bookList').component('bookList', {
                     });
             });
         };
+
+        this.prevPage = function () {
+            if (self.page > 1) {
+                self.page--;
+                self.from -= this.step;
+                $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                    .success(function (response) {
+                        self.bookss = response;
+                    });
+            }
+        };
+
+        this.nextPage = function () {
+            $http.get(self.base_url + "/size?name=" + self.search_name)
+                .success(function (response) {
+                    self.size = response;
+                    if (self.size > self.from + self.step) {
+                        self.page++;
+                        self.from += self.step;
+                        $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                            .success(function (response) {
+                                self.bookss = response;
+                            });
+                    }
+                });
+        };
     }]
 });

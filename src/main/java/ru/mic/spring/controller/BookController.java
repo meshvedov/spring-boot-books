@@ -38,5 +38,9 @@ public class BookController {
         bookRepository.delete(id);
     }
 
+    @RequestMapping(value = "/size", method = RequestMethod.GET)
+    public long size(@RequestParam("name") String name) {
+        return bookRepository.count();
+    }
 
 }
