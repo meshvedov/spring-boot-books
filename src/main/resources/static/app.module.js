@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('booksList', []);
+var app = angular.module('booksApp', ['bookList']);
 // app.controller('booksCtrl', ['$scope', '$http', function ($scope, $http) {
 // $scope.base_url = "http://localhost:8080";
 // $scope.search_name = "";

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('booksList').component('bookList', {
+angular.module('bookList').component('bookList', {
     template:
         '<table width="100%">'+
             '<tbody>'+
