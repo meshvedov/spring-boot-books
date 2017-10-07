@@ -15,6 +15,7 @@ angular.module('bookList').component('bookList', {
             .then(function (response) {
                 self.bookss = response.data;
             });
+
         var gets = function() {
             $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
                 .then(function (response) {
@@ -84,6 +85,20 @@ angular.module('bookList').component('bookList', {
             //         self.bookss = response;
             //     });
             gets();
+        };
+
+        this.add = function (user) {
+            $http.post(self.base_url + "/add", user).then(function () {
+                // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
+                //     .success(function (response) {
+                //         $scope.users = response;
+                //         $scope.user0.name = [];
+                //         $scope.user0.age = null;
+                //         $scope.user0.admin = false;
+                //
+                //     });
+                gets();
+            })
         };
     }]
 });
