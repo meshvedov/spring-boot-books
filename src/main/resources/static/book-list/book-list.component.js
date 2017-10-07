@@ -10,6 +10,7 @@ angular.module('bookList').component('bookList', {
         self.from = 0;
         self.step = 10;
         self.page = 1;
+        self.canRead = true;
 
         $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
             .then(function (response) {
@@ -63,6 +64,7 @@ angular.module('bookList').component('bookList', {
 
         this.edit = function (book) {
             self.book0 = book;
+            self.canRead = false;
         };
 
         this.search = function (name) {
