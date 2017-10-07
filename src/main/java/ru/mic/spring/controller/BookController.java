@@ -47,4 +47,10 @@ public class BookController {
     public void addBook(@RequestBody Book book) {
         bookRepository.save(book);
     }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable String id, @RequestBody Book book) {
+        if (!id.equals("undefined"))
+            bookRepository.save(book);
+    }
 }

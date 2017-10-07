@@ -64,6 +64,7 @@ angular.module('bookList').component('bookList', {
 
         this.edit = function (book) {
             self.book0 = book;
+            self.book0.readAlready = false;
             self.canRead = false;
         };
 
@@ -82,15 +83,38 @@ angular.module('bookList').component('bookList', {
             self.page = 1;
             self.from = 0;
             self.search_name = "";
-            // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
-            //     .success(function (response) {
-            //         self.bookss = response;
-            //     });
             gets();
         };
 
-        this.add = function (user) {
-            $http.post(self.base_url + "/add", user).then(function () {
+        this.newBook = function () {
+            self.canRead = true;
+            self.book0 = [];
+            // $http.post(self.base_url + "/add", user).then(function () {
+            //     // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
+            //     //     .success(function (response) {
+            //     //         $scope.users = response;
+            //     //         $scope.user0.name = [];
+            //     //         $scope.user0.age = null;
+            //     //         $scope.user0.admin = false;
+            //     //
+            //     //     });
+            //     gets();
+            // })
+        };
+
+        this.update = function (id, book1) {
+            $http.put(self.base_url + "/update/" + id, book1).then(function () {
+                // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
+                //     .success(function (response) {
+                //         $scope.users = response;
+                //     });
+                gets();
+                self.book0 = [];
+            });
+        };
+
+        this.add = function (book) {
+            $http.post(self.base_url + "/add", book).then(function () {
                 // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
                 //     .success(function (response) {
                 //         $scope.users = response;
@@ -100,6 +124,7 @@ angular.module('bookList').component('bookList', {
                 //
                 //     });
                 gets();
+                self.book0 = [];
             })
         };
     }]

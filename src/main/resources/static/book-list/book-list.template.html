@@ -24,7 +24,7 @@
         <td>{{book.description}}</td>
         <td>{{book.printYear}}</td>
         <td>{{book.isbn}}</td>
-        <td>{{book.read | checkmark}}</td>
+        <td>{{book.readAlready | checkmark}}</td>
         <td>
             <input type="image" name="image" ng-src="images/edit.png" width="25" ng-click="$ctrl.edit(book)">
         </td>
@@ -62,7 +62,7 @@
     <tr>
         <td valign="top">
             <fieldset>
-                <legend>Add Book</legend>
+                <legend>Book</legend>
                 <table>
                     <tbody>
                     <tr>
@@ -71,7 +71,8 @@
                     </tr>
                     <tr>
                         <td>Author</td>
-                        <td>{{$ctrl.book0.author}}</td>
+                        <td ng-hide="$ctrl.canRead">{{$ctrl.book0.author}}</td>
+                        <td><input type="text" ng-show="$ctrl.canRead" ng-model="$ctrl.book0.author"></td>
                     </tr>
                     <tr>
                         <td>Title</td>
@@ -91,13 +92,14 @@
                     </tr>
                     <tr>
                         <td>Read</td>
-                        <td><input type="checkbox" ng-show="$ctrl.canRead" ng-model="$ctrl.book0.read"></td>
+                        <td><input type="checkbox" ng-model="$ctrl.book0.readAlready"></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <input type="button" value="ADD" ng-click="$ctrl.add(book0)">
-                            <input type="button" value="UPDATE" ng-click="$ctrl.update(book0.id, book0)">
+                            <input type="button" value="NEW" ng-click="$ctrl.newBook()">
+                            <input type="button" value="ADD" ng-click="$ctrl.add($ctrl.book0)">
+                            <input type="button" value="UPDATE" ng-click="$ctrl.update($ctrl.book0.id, $ctrl.book0)">
                         </td>
                     </tr>
                     </tbody>
