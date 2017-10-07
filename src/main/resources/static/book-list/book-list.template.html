@@ -56,3 +56,75 @@
     </tr>
     </tbody>
 </table>
+
+
+<table width="100%">
+    <tr>
+        <td valign="top">
+            <fieldset>
+                <legend>About Book</legend>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>{{$ctrl.book0.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Author</td>
+                        <td>{{$ctrl.book0.author}}</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td><input type="text" value="name" ng-model="$ctrl.book0.title"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" value="name" ng-model="$ctrl.book0.description"></td>
+                    </tr>
+                    <tr>
+                        <td>ISBN</td>
+                        <td><input type="text" value="name" ng-model="$ctrl.book0.isbn"></td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td><input type="number" value="0" ng-model="$ctrl.book0.printYear"></td>
+                    </tr>
+                    <tr>
+                        <td>Read</td>
+                        <td><input type="checkbox" ng-model="$ctrl.book0.read"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="ADD" ng-click="$ctrl.add(book0)">
+                            <input type="button" value="UPDATE" ng-click="$ctrl.update(book0.id, book0)">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </td>
+        <td valign="top">
+            <fieldset>
+                <legend>Search Book</legend>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><h4>Title:</h4></td>
+                        <td>
+                            <input type="text" ng-model="searchname">
+                        </td>
+                        <td><input type="button" value="SEARCH" ng-click="$ctrl.search(searchname)"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="CLEAR" ng-click="$ctrl.clearsearch()">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </td>
+    </tr>
+</table>

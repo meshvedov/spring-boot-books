@@ -15,13 +15,20 @@ angular.module('bookList').component('bookList', {
             .then(function (response) {
                 self.bookss = response.data;
             });
+        var gets = function() {
+            $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                .then(function (response) {
+                    self.bookss = response.data;
+                });
+        };
 
         this.delete = function(id) {
             $http.delete(this.base_url + "/delete/" + id).then(function () {
-                $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                    .then(function (response) {
-                        self.bookss = response.data;
-                    });
+                // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                //     .then(function (response) {
+                //         self.bookss = response.data;
+                //     });
+                gets();
             });
         };
 
@@ -29,10 +36,11 @@ angular.module('bookList').component('bookList', {
             if (self.page > 1) {
                 self.page--;
                 self.from -= this.step;
-                $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                    .success(function (response) {
-                        self.bookss = response;
-                    });
+                // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                //     .success(function (response) {
+                //         self.bookss = response;
+                //     });
+                gets();
             }
         };
 
@@ -43,12 +51,39 @@ angular.module('bookList').component('bookList', {
                     if (self.size > self.from + self.step) {
                         self.page++;
                         self.from += self.step;
-                        $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                            .success(function (response) {
-                                self.bookss = response;
-                            });
+                        // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+                        //     .success(function (response) {
+                        //         self.bookss = response;
+                        //     });
+                        gets();
                     }
                 });
+        };
+
+        this.edit = function (book) {
+            self.book0 = book;
+        };
+
+        this.search = function (name) {
+            self.search_name = name;
+            self.page = 1;
+            self.from = 0;
+            // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+            //     .success(function (response) {
+            //         self.bookss = response;
+            //     });
+            gets();
+        };
+
+        this.clearsearch = function () {
+            self.page = 1;
+            self.from = 0;
+            self.search_name = "";
+            // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
+            //     .success(function (response) {
+            //         self.bookss = response;
+            //     });
+            gets();
         };
     }]
 });
