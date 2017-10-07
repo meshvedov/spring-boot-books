@@ -1,0 +1,58 @@
+<table width="100%">
+    <tbody>
+    <tr>
+        <td>
+            <caption><h3>Books List</h3></caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Print Year</th>
+        <th>ISBN</th>
+        <th>Read</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="botonLine" ng-repeat="book in $ctrl.bookss">
+        <td>{{book.id}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.printYear}}</td>
+        <td>{{book.isbn}}</td>
+        <td>{{book.read | checkmark}}</td>
+        <td>
+            <input type="image" name="image" ng-src="images/edit.png" width="25" ng-click="$ctrl.edit(book)">
+        </td>
+        <td>
+            <input type="image" name="image" ng-src="images/remove.png" width="25" ng-click="$ctrl.delete(book.id)">
+        </td>
+    </tr>
+    </tbody>
+    </td>
+    </tr>
+    </tbody>
+</table>
+
+<table align="center">
+    <tbody>
+    <tr>
+        <td width="100%">
+            <table>
+                <tbody>
+                <tr>
+                    <td><h4> Page: </h4></td>
+                    <td><input type="button" value=" < " ng-click="$ctrl.prevPage()"></td>
+                    <td>{{$ctrl.page}}</td>
+                    <td><input type="button" value=" > " ng-click="$ctrl.nextPage()"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>

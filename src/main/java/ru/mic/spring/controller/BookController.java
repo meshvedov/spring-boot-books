@@ -3,10 +3,7 @@ package ru.mic.spring.controller;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.mic.spring.domain.Book;
 import ru.mic.spring.repository.BookRepository;
 import ru.mic.spring.repository.HibernateSessionFactory;
@@ -34,6 +31,16 @@ public class BookController {
         List<Book> list = session.createSQLQuery(query).addEntity(Book.class).setFirstResult(from).setMaxResults(step).list();
         session.getTransaction().commit();
         return list;
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable Long id) {
+        bookRepository.delete(id);
+    }
+
+    @RequestMapping(value = "/size", method = RequestMethod.GET)
+    public long size(@RequestParam("name") String name) {
+        return bookRepository.count();
     }
 
 }
