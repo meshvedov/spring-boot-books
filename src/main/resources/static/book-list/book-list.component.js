@@ -124,7 +124,7 @@ angular.module('bookList').component('bookList', {
                 //
                 //     });
                 gets();
-                self.book0 = [];
+                // self.book0 = [];
             })
         };
     }]
