@@ -98,8 +98,8 @@
                         <td></td>
                         <td>
                             <input type="button" value="NEW" ng-click="$ctrl.newBook()">
-                            <input type="button" value="ADD" ng-click="$ctrl.add($ctrl.book0)">
-                            <input type="button" value="UPDATE" ng-click="$ctrl.update($ctrl.book0.id, $ctrl.book0)">
+                            <input type="button" ng-show="$ctrl.canRead" value="ADD" ng-click="$ctrl.add($ctrl.book0)">
+                            <input type="button" ng-hide="$ctrl.canRead" value="UPDATE" ng-click="$ctrl.update($ctrl.book0.id, $ctrl.book0)">
                         </td>
                     </tr>
                     </tbody>
