@@ -24,7 +24,7 @@
         <td>{{book.description}}</td>
         <td>{{book.printYear}}</td>
         <td>{{book.isbn}}</td>
-        <td>{{book.read | checkmark}}</td>
+        <td>{{book.readAlready | checkmark}}</td>
         <td>
             <input type="image" name="image" ng-src="images/edit.png" width="25" ng-click="$ctrl.edit(book)">
         </td>
@@ -55,4 +55,78 @@
         </td>
     </tr>
     </tbody>
+</table>
+
+
+<table width="100%">
+    <tr>
+        <td valign="top">
+            <fieldset>
+                <legend>Book</legend>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>{{$ctrl.book0.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Author</td>
+                        <td ng-hide="$ctrl.canRead">{{$ctrl.book0.author}}</td>
+                        <td><input type="text" ng-show="$ctrl.canRead" ng-model="$ctrl.book0.author"></td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td><input type="text" value="name" ng-model="$ctrl.book0.title"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" value="name" ng-model="$ctrl.book0.description"></td>
+                    </tr>
+                    <tr>
+                        <td>ISBN</td>
+                        <td><input type="text" value="name" ng-model="$ctrl.book0.isbn"></td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td><input type="number" value="0" ng-model="$ctrl.book0.printYear"></td>
+                    </tr>
+                    <tr>
+                        <td>Read</td>
+                        <td><input type="checkbox" ng-hide="$ctrl.canRead" ng-model="$ctrl.book0.readAlready"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="NEW" ng-click="$ctrl.newBook()">
+                            <input type="button" ng-show="$ctrl.canRead" value="ADD" ng-click="$ctrl.add($ctrl.book0)">
+                            <input type="button" ng-hide="$ctrl.canRead" value="UPDATE" ng-click="$ctrl.update($ctrl.book0.id, $ctrl.book0)">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </td>
+        <td valign="top">
+            <fieldset>
+                <legend>Search Book</legend>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><h4>Title:</h4></td>
+                        <td>
+                            <input type="text" ng-model="searchname">
+                        </td>
+                        <td><input type="button" value="SEARCH" ng-click="$ctrl.search(searchname)"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="CLEAR" ng-click="$ctrl.clearsearch()">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </td>
+    </tr>
 </table>

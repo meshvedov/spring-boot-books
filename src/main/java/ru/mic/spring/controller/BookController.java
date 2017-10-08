@@ -23,7 +23,7 @@ public class BookController {
                              @RequestParam("name") String name) throws Exception {
         String query;
         if (name == null || name.isEmpty()) query = "SELECT * FROM book";
-        else query = "select * from book where name like '%" + name + "%'";
+        else query = "SELECT * FROM book WHERE author LIKE '%" + name + "%'";
 
         Session session = sessionFactory.getCurrentSession();
         if ((session.getTransaction() != null ))
@@ -43,4 +43,14 @@ public class BookController {
         return bookRepository.count();
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void addBook(@RequestBody Book book) {
+        bookRepository.save(book);
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable String id, @RequestBody Book book) {
+        if (!id.equals("undefined"))
+            bookRepository.save(book);
+    }
 }
