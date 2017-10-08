@@ -56,7 +56,7 @@ angular.module('bookList').component('bookList', {
                         // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
                         //     .success(function (response) {
                         //         self.bookss = response;
-                        //     });
+                        //     });;
                         gets();
                     }
                 });
@@ -88,18 +88,7 @@ angular.module('bookList').component('bookList', {
 
         this.newBook = function () {
             self.canRead = true;
-            self.book0 = [];
-            // $http.post(self.base_url + "/add", user).then(function () {
-            //     // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
-            //     //     .success(function (response) {
-            //     //         $scope.users = response;
-            //     //         $scope.user0.name = [];
-            //     //         $scope.user0.age = null;
-            //     //         $scope.user0.admin = false;
-            //     //
-            //     //     });
-            //     gets();
-            // })
+            refresh();
         };
 
         this.update = function (id, book1) {
@@ -109,23 +98,30 @@ angular.module('bookList').component('bookList', {
                 //         $scope.users = response;
                 //     });
                 gets();
-                self.book0 = [];
+                refresh();
             });
         };
 
-        this.add = function (book) {
-            $http.post(self.base_url + "/add", book).then(function () {
-                // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
+        this.add = function (book2) {
+            $http.post(self.base_url + "/add", book2).then(function () {
+                // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
                 //     .success(function (response) {
-                //         $scope.users = response;
-                //         $scope.user0.name = [];
-                //         $scope.user0.age = null;
-                //         $scope.user0.admin = false;
+                //         self.bookss = response;
                 //
                 //     });
                 gets();
-                // self.book0 = [];
+                refresh();
             })
+        };
+
+        var refresh = function () {
+            self.book0.id = null;
+            self.book0.author = "";
+            self.book0.title = "";
+            self.book0.description = "";
+            self.book0.isbn = "";
+            self.book0.printYear = 0;
+            self.book0.readAlready = false;
         };
     }]
 });
