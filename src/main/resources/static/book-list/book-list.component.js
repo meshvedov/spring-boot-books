@@ -26,10 +26,6 @@ angular.module('bookList').component('bookList', {
 
         this.delete = function(id) {
             $http.delete(this.base_url + "/delete/" + id).then(function () {
-                // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                //     .then(function (response) {
-                //         self.bookss = response.data;
-                //     });
                 gets();
             });
         };
@@ -38,10 +34,6 @@ angular.module('bookList').component('bookList', {
             if (self.page > 1) {
                 self.page--;
                 self.from -= this.step;
-                // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                //     .success(function (response) {
-                //         self.bookss = response;
-                //     });
                 gets();
             }
         };
@@ -53,10 +45,6 @@ angular.module('bookList').component('bookList', {
                     if (self.size > self.from + self.step) {
                         self.page++;
                         self.from += self.step;
-                        // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                        //     .success(function (response) {
-                        //         self.bookss = response;
-                        //     });;
                         gets();
                     }
                 });
@@ -72,10 +60,6 @@ angular.module('bookList').component('bookList', {
             self.search_name = name;
             self.page = 1;
             self.from = 0;
-            // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-            //     .success(function (response) {
-            //         self.bookss = response;
-            //     });
             gets();
         };
 
@@ -91,37 +75,29 @@ angular.module('bookList').component('bookList', {
             refresh();
         };
 
-        this.update = function (id, book1) {
-            $http.put(self.base_url + "/update/" + id, book1).then(function () {
-                // $http.get($scope.base_url + "/users?from=" + $scope.from + "&step=" + $scope.step + "&name=" + $scope.search_name)
-                //     .success(function (response) {
-                //         $scope.users = response;
-                //     });
+        this.update = function (id, book) {
+            $http.put(self.base_url + "/update/" + id, book).then(function () {
                 gets();
                 refresh();
             });
         };
 
-        this.add = function (book2) {
-            $http.post(self.base_url + "/add", book2).then(function () {
-                // $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
-                //     .success(function (response) {
-                //         self.bookss = response;
-                //
-                //     });
+        this.add = function (book) {
+            $http.post(self.base_url + "/add", book).then(function () {
                 gets();
                 refresh();
-            })
+            });
         };
 
         var refresh = function () {
-            self.book0.id = null;
-            self.book0.author = "";
-            self.book0.title = "";
-            self.book0.description = "";
-            self.book0.isbn = "";
-            self.book0.printYear = 0;
-            self.book0.readAlready = false;
+            // self.book0.id = null;
+            // self.book0.author = "";
+            // self.book0.title = "";
+            // self.book0.description = "";
+            // self.book0.isbn = "";
+            // self.book0.printYear = null;
+            // self.book0.readAlready = false;
+            self.book0 = {};
         };
     }]
 });
