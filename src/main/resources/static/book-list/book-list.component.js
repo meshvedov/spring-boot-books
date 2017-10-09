@@ -87,8 +87,8 @@ angular.module('bookList').component('bookList', {
                 gets();
                 refresh();
                 self.canRead = true;
-                self.can2 = false;
-                self.can3 = false;
+                self.can2 = true;
+                self.can3 = true;
             });
         };
 
