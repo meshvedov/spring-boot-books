@@ -7,6 +7,7 @@ angular.module('bookList').component('bookList', {
         var self = this;
         self.base_url = "http://localhost:8080";
         self.search_name = "";
+        self.findName = "author";
         self.from = 0;
         self.step = 10;
         self.page = 1;
@@ -14,13 +15,13 @@ angular.module('bookList').component('bookList', {
         self.can2 = true;
         self.can3 = true;
 
-        $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+        $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name + "&find=" + self.findName)
             .then(function (response) {
                 self.bookss = response.data;
             });
 
         var gets = function() {
-            $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
+            $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name + "&find=" + self.findName)
                 .then(function (response) {
                     self.bookss = response.data;
                 });
@@ -60,8 +61,9 @@ angular.module('bookList').component('bookList', {
             self.can3 = true;
         };
 
-        this.search = function (name) {
+        this.search = function (name, find) {
             self.search_name = name;
+            self.findName = find;
             self.page = 1;
             self.from = 0;
             gets();
@@ -71,6 +73,7 @@ angular.module('bookList').component('bookList', {
             self.page = 1;
             self.from = 0;
             self.search_name = "";
+            self.findName = "author";
             gets();
         };
 

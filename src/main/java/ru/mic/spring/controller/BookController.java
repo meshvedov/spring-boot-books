@@ -20,10 +20,12 @@ public class BookController {
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public List<Book> getAll(@RequestParam("from") int from,
                              @RequestParam("step") int step,
-                             @RequestParam("name") String name) throws Exception {
+                             @RequestParam("name") String name,
+                             @RequestParam("find") String findName) throws Exception {
         String query;
         if (name == null || name.isEmpty()) query = "SELECT * FROM book";
-        else query = "SELECT * FROM book WHERE title LIKE '%" + name + "%'";
+        else query = "SELECT * FROM book WHERE "+ findName +" LIKE '%" + name + "%'";
+//        else query = "SELECT * FROM book WHERE title LIKE '%" + name + "%'";
 
         Session session = sessionFactory.getCurrentSession();
         if ((session.getTransaction() != null ))
