@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="booksApp">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Books</title>
+    <style type="text/css">
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            border-collapse: collapse; /* Отображать двойные линии как одинарные */
+        }
+
+        th {
+            background: #ccc; /* Цвет фона */
+            text-align: left; /* Выравнивание по левому краю */
+            border-bottom: 3px solid #B9B29F;
+        }
+
+        td, th {
+            /*border: 1px solid #800; /* Параметры границы */
+            padding: 4px; /* Поля в ячейках */
+        }
+
+        .botonLine {
+            border-bottom: 2px solid #a09986;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script type="text/javascript" src="app.module.js"></script>
+    <script src="book-list/book-list.module.js"></script>
+    <script src="book-list/book-list.component.js"></script>
+</head>
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>-->
+
+
+<body>
+
+    <book-list></book-list>
+
+</body>
