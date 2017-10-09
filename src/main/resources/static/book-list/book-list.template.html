@@ -72,23 +72,23 @@
                     <tr>
                         <td>Author</td>
                         <td ng-hide="$ctrl.canRead">{{$ctrl.book0.author}}</td>
-                        <td><input type="text" ng-show="$ctrl.canRead" ng-model="$ctrl.book0.author"></td>
+                        <td><input type="text" ng-show="$ctrl.can2" ng-model="$ctrl.book0.author"></td>
                     </tr>
                     <tr>
                         <td>Title</td>
-                        <td><input type="text" value="name" ng-model="$ctrl.book0.title"></td>
+                        <td><input type="text" ng-show="$ctrl.can3" value="name" ng-model="$ctrl.book0.title"></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input type="text" value="name" ng-model="$ctrl.book0.description"></td>
+                        <td><input type="text" ng-show="$ctrl.can3" value="name" ng-model="$ctrl.book0.description"></td>
                     </tr>
                     <tr>
                         <td>ISBN</td>
-                        <td><input type="text" value="name" ng-model="$ctrl.book0.isbn"></td>
+                        <td><input type="text" ng-show="$ctrl.can3" value="name" ng-model="$ctrl.book0.isbn"></td>
                     </tr>
                     <tr>
                         <td>Year</td>
-                        <td><input type="number" value="0" ng-model="$ctrl.book0.printYear"></td>
+                        <td><input type="number" ng-show="$ctrl.can3" value="0" ng-model="$ctrl.book0.printYear"></td>
                     </tr>
                     <tr>
                         <td>Read</td>
@@ -97,7 +97,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <input type="button" value="NEW" ng-click="$ctrl.newBook()">
+                            <!--<input type="button" value="NEW" ng-click="$ctrl.newBook()">-->
                             <input type="button" ng-show="$ctrl.canRead" value="ADD" ng-click="$ctrl.add($ctrl.book0)">
                             <input type="button" ng-hide="$ctrl.canRead" value="UPDATE" ng-click="$ctrl.update($ctrl.book0.id, $ctrl.book0)">
                         </td>

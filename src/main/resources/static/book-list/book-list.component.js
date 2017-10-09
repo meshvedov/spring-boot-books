@@ -11,6 +11,8 @@ angular.module('bookList').component('bookList', {
         self.step = 10;
         self.page = 1;
         self.canRead = true;
+        self.can2 = true;
+        self.can3 = true;
 
         $http.get(self.base_url + "/books?from=" + self.from + "&step=" + self.step + "&name=" + self.search_name)
             .then(function (response) {
@@ -54,6 +56,8 @@ angular.module('bookList').component('bookList', {
             self.book0 = book;
             self.book0.readAlready = false;
             self.canRead = false;
+            self.can2 = false;
+            self.can3 = true;
         };
 
         this.search = function (name) {
@@ -73,12 +77,18 @@ angular.module('bookList').component('bookList', {
         this.newBook = function () {
             self.canRead = true;
             refresh();
+            self.canRead = true;
+            self.can2 = true;
+            self.can3 = true;
         };
 
         this.update = function (id, book) {
             $http.put(self.base_url + "/update/" + id, book).then(function () {
                 gets();
                 refresh();
+                self.canRead = true;
+                self.can2 = true;
+                self.can3 = true;
             });
         };
 
