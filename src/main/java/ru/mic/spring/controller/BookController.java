@@ -23,7 +23,7 @@ public class BookController {
                              @RequestParam("name") String name) throws Exception {
         String query;
         if (name == null || name.isEmpty()) query = "SELECT * FROM book";
-        else query = "SELECT * FROM book WHERE author LIKE '%" + name + "%'";
+        else query = "SELECT * FROM book WHERE title LIKE '%" + name + "%'";
 
         Session session = sessionFactory.getCurrentSession();
         if ((session.getTransaction() != null ))
