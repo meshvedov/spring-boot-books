@@ -23,5 +23,15 @@ INSERT INTO test.book (author, description, isbn, print_year, read_already, titl
   ('Ccc', 'crist', 'isbn-9', 2009, 0, 'Book-9'),
   ('Pavel', 'pavel life', 'isbn-10', 2008, 0, 'Book-10'),
   ('Mic', 'mic', 'isbn-11', 2008, 0, 'Book-11'),
-  ('qqq', 'crist', 'isbn-8', 2008, 0, 'Book-12')
+  ('qqq', 'crist', 'isbn-8', 2008, 0, 'Book-12'),
+  ('Mini', 'mini', 'isbn-9', 2000, 0, 'Book-13'),
+  ('Helly', 'helly2', 'isbn-1', 2000, 0, 'Book_two'),
+  ('Helly', 'helly2', 'isbn-1', 2001, 0, 'Book_two'),
+  ('Helly', 'helly2', 'isbn-1', 2002, 0, 'Book_two'),
+  ('Ann', 'ann2', 'isbn-2', 2002, 0, 'Book_ann'),
+  ('Ann', 'ann2', 'isbn-2', 2003, 0, 'Book_ann'),
+  ('Ann', 'ann2', 'isbn-2', 2004, 0, 'Book_ann'),
+  ('Honn', 'some of honn', 'isbn-4', 2004, 0, 'Book-honn'),
+  ('Honn', 'some of honn', 'isbn-4', 2005, 0, 'Book-honn'),
+  ('Honn', 'some of honn', 'isbn-4', 2006, 0, 'Book-honn')
 ;
